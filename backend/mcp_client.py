@@ -6,7 +6,7 @@ from .config import MCP_SERVER_PATH
 
 class MCPClient:
     async def call_async(self,tool,args=None):
-        params=StdioServerParameters(command=sys.executable,args=[MCP_SERVER_PATH])
+        params=StdioServerParameters(command=sys.executable,args=["-m","mcp_server.server"])
         async with AsyncExitStack() as stack:
             read,write=await stack.enter_async_context(stdio_client(params))
             session=await stack.enter_async_context(ClientSession(read,write))
