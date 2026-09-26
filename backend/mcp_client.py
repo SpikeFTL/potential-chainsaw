@@ -14,6 +14,8 @@ class MCPClient:
             result=await session.call_tool(tool,arguments=args or {})
             if getattr(result,"structuredContent",None):
                 return result.structuredContent
+            if getattr(result,"structured_content",None):
+                return result.structured_content
             for item in getattr(result,"content",[]):
                 if getattr(item,"text",None):
                     return json.loads(item.text)
