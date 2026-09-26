@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-from .database import Database
+from mcp_server.database import Database
 
 mcp=FastMCP("SQLMind MCP Server")
 db=Database()
